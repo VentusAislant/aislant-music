@@ -1,22 +1,34 @@
 # Aislant Music
 
-我的私人音乐小工具仓库。
+> A music intelligence lab created by Ventus Aislant.
 
-这个仓库会逐步沉淀一些和音乐相关的小工具。目前包含从文本乐谱生成 MIDI/音频的 `music_generator`，并预留了 `guitar` 模块用于后续吉他和弦图、六线谱等功能。
+Aislant Music 是一个面向音乐创作、记谱、演奏表达与生成式工具的代码实验室。它不追求把音乐压缩成冰冷的按钮，而是尝试让代码成为一种可以理解旋律、组织乐谱、生成声音、辅助表达的创作介质。
 
-## 目录结构
+这里会持续沉淀围绕音乐的工具、模型、格式和工作流：从文本乐谱到 MIDI，从和弦图到吉他六线谱，从规则化生成到更智能的音乐辅助创作。每个模块都可以独立使用，也可以在未来组合成更完整的音乐创作系统。🎼
+
+## Development Map
+
+- [x] Text score to MIDI generation
+- [x] Text score to audio rendering workflow
+- [ ] Guitar chord diagram generation
+- [ ] Guitar tab rendering from chord patterns
+- [ ] Shared music notation and rhythm utilities
+- [ ] Music analysis and generation experiments
+- [ ] Higher-level creative composition workflows
+
+## Project Structure
 
 ```text
 aislant_music/
-├── music_generator/  # 文本乐谱 -> MIDI/音频
-└── guitar/           # 吉他相关工具，暂时只预留模块
+├── music_generator/  # Text score -> MIDI/audio
+└── guitar/           # Guitar chords, diagrams, and tab tools
 
-playground/           # 临时实验、notebook、歌曲素材
+playground/           # Experiments, notebooks, and song materials
 ```
 
-## 安装
+## Installation
 
-建议使用 Python 3.10。
+Python 3.10 is recommended.
 
 ```shell
 conda create -n aislant-music python=3.10 -y
@@ -24,21 +36,25 @@ conda activate aislant-music
 pip install -e .
 ```
 
-安装音乐生成器依赖：
+Install the music generator extras:
 
 ```shell
 pip install -e .[music-generator]
 ```
 
-如果需要运行 notebook：
+Install notebook support:
 
 ```shell
 pip install -e .[notebook]
 ```
 
-## 使用
+## Modules
 
-生成 MIDI：
+### 🎹 Music Generator
+
+`music_generator` turns a lightweight text score into MIDI or audio. It is designed for quick sketching: write notes, rests, chords, and arpeggios in text, then render them into playable output.
+
+Generate MIDI:
 
 ```shell
 python -m aislant_music.music_generator.generate \
@@ -46,7 +62,7 @@ python -m aislant_music.music_generator.generate \
   -o happy_birthday.mid
 ```
 
-生成音频时需要本机安装 `fluidsynth`：
+Generate audio:
 
 ```shell
 python -m aislant_music.music_generator.generate \
@@ -54,6 +70,31 @@ python -m aislant_music.music_generator.generate \
   -o happy_birthday.wav
 ```
 
-## 模块规划
+Audio rendering uses `fluidsynth`, so make sure it is installed on your system when exporting `.wav` or `.mp3` files.
 
-`music_generator` 先保持独立，不急着抽公共 core。后续 `guitar` 如果也需要复用音符、节奏、小节、调式等概念，再把真实共享的部分抽到公共模块。
+### 🎸 Guitar
+
+`guitar` is the home for guitar-oriented notation tools: chord shapes, chord diagrams, picking patterns, and six-line tab rendering.
+
+The intended workflow is expressive and compact:
+
+```text
+C  53231323
+G  53231323
+Em 63231323
+```
+
+The module is designed around two core ideas:
+
+- turn chord names such as `C`, `G`, and `Em` into readable chord diagrams
+- turn chord progressions and picking patterns into guitar tablature
+
+## Playground
+
+`playground/` is where experiments live: notebooks, song materials, rough scripts, and ideas that are still becoming tools. Once an experiment becomes reusable, it can graduate into `aislant_music/`.
+
+## License
+
+This repository is publicly visible for learning and reference, but it is not open source. Commercial use, redistribution, sublicensing, hosting, or publishing derivative works requires explicit written permission from Ventus Aislant.
+
+See [LICENSE](./LICENSE) for details.
