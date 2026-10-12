@@ -1,0 +1,58 @@
+# macOS
+.DS_Store
+Thumbs.db
+
+# Python bytecode/cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# Test and tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+
+# Model/training checkpoints
+checkpoints/
+
+# Generated music outputs
+*.mid
+*.midi
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# Local scratch outputs
+outputs/
+tmp/
+temp/
+

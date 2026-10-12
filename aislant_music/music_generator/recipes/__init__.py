@@ -1,0 +1,2 @@
+"""Example music generator recipes."""
+

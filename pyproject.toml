@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aislant-music"
+version = "0.1.0"
+description = "Ventus Aislant's private music tools"
+readme = "README.md"
+authors = [
+    { name = "Ventus Aislant (张浩杰)", email = "z18435601425@gmail.com" }
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Ubuntu",
+]
+dependencies = []
+
+[project.optional-dependencies]
+music-generator = [
+    "mido==1.3.3",
+    "pydub==0.25.1",
+]
+notebook = [
+    "notebook==7.2.2",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/AislantVentus/aislant_music"
+
+[tool.setuptools.packages.find]
+include = ["aislant_music*"]
+exclude = ["playground*"]
+
+[tool.setuptools.package-data]
+"aislant_music.music_generator.resources" = ["*.sf2"]
+
+[tool.wheel]
+exclude = ["playground*"]
